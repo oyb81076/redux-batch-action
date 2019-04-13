@@ -1,6 +1,6 @@
-# redux-batches
+# redux-batch-action
 ## install
-yarn install redux-batched-subscribe redux-batches
+yarn install redux-batched-subscribe redux-batch-action
 ## store.js
 ```tsx
 import { createStore, compose, combineReducers, applyMiddleware } from "redux";
