@@ -15,9 +15,9 @@ const store = createStore(
   ),
 )
 ```
-### with react-redux ```
+### with react-redux
 ```tsx
-import { batches } from "redux-batches"
+import { batch } from "redux-batch-action"
 import { connect } from "react-redux"
 connect(null, (dispatch)=> {
   return {
@@ -48,6 +48,7 @@ function someAction(){
 ```
 ### with promise
 ```tsx
+import { transaction } from "redux-batch-action";
 function promiseAction(){
   return async (dispatch, getStore)=> {
     const commit = transaction();
