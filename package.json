@@ -1,9 +1,13 @@
 {
   "name": "redux-batch-action",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "dist/redux-batch-action.js",
   "typings": "src/redux-batch-action.ts",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/oyb81076/redux-batch-action.git"
+  },
   "scripts": {
     "test": "jest",
     "build": "tsc"
