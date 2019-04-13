@@ -8,11 +8,11 @@ export function batchNotifier(notify: () => void) {
   }
 }
 export function batch(fn: () => void) {
-  const commit = transaction();
+  const finish = transaction();
   try {
     fn();
   } finally {
-    commit();
+    finish();
   }
 }
 export function transaction(): () => void {

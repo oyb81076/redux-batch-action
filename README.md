@@ -3,10 +3,10 @@
 yarn install redux-batched-subscribe redux-batch-action
 ## example
 ```ts
-import { createStore, combineReducers, applyMiddleware, compose } from "redux"
-import thunk from "redux-thunk";
+import { applyMiddleware, combineReducers, compose, createStore } from "redux";
 import { batchedSubscribe } from "redux-batched-subscribe";
-import { batchNotifier, batch } from "redux-batch-action";
+import thunk from "redux-thunk";
+import { batch, batchNotifier } from "redux-batch-action";
 function reducer(state = 0, action: { type: "incr" }) {
   switch (action.type) {
     case "incr": return state + 1;
@@ -17,7 +17,7 @@ const store = createStore(
   combineReducers({ count: reducer }),
   compose(
     applyMiddleware(thunk),
-    batchedSubscribe(batchNotifier)
+    batchedSubscribe(batchNotifier),
   ),
 );
 
@@ -36,11 +36,13 @@ batch(() => {
 });
 store.dispatch(incr());
 console.log("finished");
+// console ===>
 // start
 // subscribe: 1
 // subscribe: 4
 // subscribe: 5
 // finished
+
 ```
 ## store.js
 ```tsx

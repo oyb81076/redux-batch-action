@@ -1,6 +1,6 @@
-import { createStore as _createStore, combineReducers, applyMiddleware, compose } from "redux"
-import thunk from "redux-thunk";
+import { applyMiddleware, combineReducers, compose, createStore as _createStore } from "redux";
 import { batchedSubscribe } from "redux-batched-subscribe";
+import thunk from "redux-thunk";
 import { batchNotifier } from "../src/redux-batch-action";
 function reducer(state = 0, action: { type: "incr" }) {
   switch (action.type) {
@@ -13,11 +13,11 @@ export function createStore(useThunk: boolean) {
     combineReducers({ count: reducer }),
     compose(
       applyMiddleware(...useThunk ? [thunk] : []),
-      batchedSubscribe(batchNotifier)
+      batchedSubscribe(batchNotifier),
     ),
   );
 }
 
-export function incr(){
+export function incr() {
   return { type: "incr" };
 }
